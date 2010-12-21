@@ -1,0 +1,325 @@
+QualificationAgent:
+  connection: doctrine
+  tableName: qualification_agent
+  columns:
+    id_qualif_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    texte_qualification:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    TraitementAgent:
+      local: id_qualif_agent
+      foreign: id_qualif_agent
+      type: many
+Question:
+  connection: doctrine
+  tableName: question
+  columns:
+    id_question:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nom:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    prenom:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    code_postal:
+      type: string(5)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    pays:
+      type: string(2)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    telephone:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    email:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    texte_question:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    TraitementAgent:
+      local: id_question
+      foreign: id_question
+      type: many
+    Vente:
+      local: id_question
+      foreign: id_question
+      type: many
+Rdv:
+  connection: doctrine
+  tableName: rdv
+  columns:
+    id_rdv:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    date_rdv:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_avocat:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_vente:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    commentaire_avocat:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Utilisateur:
+      local: id_avocat
+      foreign: id_utilisateur
+      type: one
+    Vente:
+      local: id_vente
+      foreign: id_vente
+      type: one
+TraitementAgent:
+  connection: doctrine
+  tableName: traitement_agent
+  columns:
+    id_traitement_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    commentaire_agent:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_qualif_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_question:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    QualificationAgent:
+      local: id_qualif_agent
+      foreign: id_qualif_agent
+      type: one
+    Question:
+      local: id_question
+      foreign: id_question
+      type: one
+    Agent:
+      local: id_agent
+      foreign: id_utilisateur
+      type: one
+Utilisateur:
+  connection: doctrine
+  tableName: utilisateur
+  columns:
+    id_utilisateur:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    nom:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    prenom:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    login:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    password:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Rdv:
+      local: id_utilisateur
+      foreign: id_avocat
+      type: many
+    TraitementAgent:
+      local: id_utilisateur
+      foreign: id_agent
+      type: many
+    Vente:
+      local: id_utilisateur
+      foreign: id_agent
+      type: many
+Vente:
+  connection: doctrine
+  tableName: vente
+  columns:
+    id_vente:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    montant:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    numero_cc:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    cvv2:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    date_validite:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    nom:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    prenom:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_question:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Question:
+      local: id_question
+      foreign: id_question
+      type: one
+    Utilisateur:
+      local: id_agent
+      foreign: id_utilisateur
+      type: one
+    Rdv:
+      local: id_vente
+      foreign: id_vente
+      type: many

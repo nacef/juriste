@@ -1,0 +1,39 @@
+Question:
+  Question_1:
+    nom: Nacef
+    prenom: LABIDI
+    code_postal: '2081'
+    pays: TN
+    telephone: '+21620776468'
+    email: nacef.l@gmail.com
+    texte_question: 'Ceci est ma question.'
+Utilisateur:
+  Utilisateur_1:
+    nom: LABIDI
+    prenom: Nacef
+    login: nacef
+    password: whassup
+    type: '1'
+  Utilisateur_2:
+    nom: Tounsi
+    prenom: Mohamed
+    login: mohamed
+    password: whassup
+    type: '1'
+  Utilisateur_3:
+    nom: DOE
+    prenom: John
+    login: john
+    password: whassup
+    type: '1'
+  Utilisateur_4:
+    nom: DOE
+    prenom: Jane
+    login: jane
+    password: whassup
+    type: '1'
+QualificationAgent:
+  QualificationAgent_1:
+    texte_qualification: 'Pas de réponse'
+  QualificationAgent_2:
+    texte_qualification: 'A rappeler'
