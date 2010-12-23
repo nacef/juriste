@@ -67,7 +67,7 @@ class questionActions extends sfActions
     {
       $Question = $form->save();
 
-      $this->redirect('question/edit?id_traitement_agent='.$Question->getIdTraitementAgent());
+      $this->redirect('question/edit?question_id='.$Question->getIdTraitementAgent());
     }
   }
 }

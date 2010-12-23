@@ -12,5 +12,8 @@ class QuestionForm extends BaseQuestionForm
 {
   public function configure()
   {
+	$this->widgetSchema['date_question'] = new sfWidgetFormInputHidden(array(), array(
+		'value' => date('Y-m-d H:i:s')
+	));
   }
 }

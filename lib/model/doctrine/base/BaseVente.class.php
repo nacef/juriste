@@ -11,7 +11,7 @@ Doctrine_Manager::getInstance()->bindComponent('Vente', 'doctrine');
  * @property string $montant
  * @property string $numero_cc
  * @property string $cvv2
- * @property string $date_validite
+ * @property timestamp $date_validite
  * @property string $nom
  * @property string $prenom
  * @property integer $id_question
@@ -24,7 +24,7 @@ Doctrine_Manager::getInstance()->bindComponent('Vente', 'doctrine');
  * @method string              getMontant()       Returns the current record's "montant" value
  * @method string              getNumeroCc()      Returns the current record's "numero_cc" value
  * @method string              getCvv2()          Returns the current record's "cvv2" value
- * @method string              getDateValidite()  Returns the current record's "date_validite" value
+ * @method timestamp           getDateValidite()  Returns the current record's "date_validite" value
  * @method string              getNom()           Returns the current record's "nom" value
  * @method string              getPrenom()        Returns the current record's "prenom" value
  * @method integer             getIdQuestion()    Returns the current record's "id_question" value
@@ -90,14 +90,14 @@ abstract class BaseVente extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 45,
              ));
-        $this->hasColumn('date_validite', 'string', 45, array(
-             'type' => 'string',
+        $this->hasColumn('date_validite', 'timestamp', 25, array(
+             'type' => 'timestamp',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
-             'length' => 45,
+             'length' => 25,
              ));
         $this->hasColumn('nom', 'string', 45, array(
              'type' => 'string',

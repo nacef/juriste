@@ -8,9 +8,9 @@
   <table>
     <tfoot>
       <tr>
-        <td colspan="2">
+		<td/>
+        <td>
           <?php echo $form->renderHiddenFields(false) ?>
-          &nbsp;<a href="<?php echo url_for('vente/index') ?>">Back to list</a>
           <?php if (!$form->getObject()->isNew()): ?>
             &nbsp;<?php echo link_to('Delete', 'vente/delete?id_vente='.$form->getObject()->getIdVente(), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
           <?php endif; ?>
@@ -28,27 +28,6 @@
         </td>
       </tr>
       <tr>
-        <th><?php echo $form['numero_cc']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['numero_cc']->renderError() ?>
-          <?php echo $form['numero_cc'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['cvv2']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['cvv2']->renderError() ?>
-          <?php echo $form['cvv2'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['date_validite']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['date_validite']->renderError() ?>
-          <?php echo $form['date_validite'] ?>
-        </td>
-      </tr>
-      <tr>
         <th><?php echo $form['nom']->renderLabel() ?></th>
         <td>
           <?php echo $form['nom']->renderError() ?>
@@ -63,17 +42,24 @@
         </td>
       </tr>
       <tr>
-        <th><?php echo $form['id_question']->renderLabel() ?></th>
+        <th><?php echo $form['numero_cc']->renderLabel() ?></th>
         <td>
-          <?php echo $form['id_question']->renderError() ?>
-          <?php echo $form['id_question'] ?>
+          <?php echo $form['numero_cc']->renderError() ?>
+          <?php echo $form['numero_cc'] ?>
         </td>
       </tr>
       <tr>
-        <th><?php echo $form['id_agent']->renderLabel() ?></th>
+        <th><?php echo $form['date_validite']->renderLabel() ?></th>
         <td>
-          <?php echo $form['id_agent']->renderError() ?>
-          <?php echo $form['id_agent'] ?>
+          <?php echo $form['date_validite']->renderError() ?>
+          <?php echo $form['date_validite'] ?>
+        </td>
+      </tr>
+      <tr>
+        <th><?php echo $form['cvv2']->renderLabel() ?></th>
+        <td>
+          <?php echo $form['cvv2']->renderError() ?>
+          <?php echo $form['cvv2'] ?>
         </td>
       </tr>
     </tbody>

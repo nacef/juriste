@@ -298,7 +298,7 @@ Vente:
       notnull: false
       autoincrement: false
     date_validite:
-      type: string(45)
+      type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false

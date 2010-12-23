@@ -12,5 +12,10 @@ class VenteForm extends BaseVenteForm
 {
   public function configure()
   {
+	$this->widgetSchema['id_question'] = new sfWidgetFormInputHidden();
+	$this->widgetSchema['id_agent'] = new sfWidgetFormInputHidden();
+	$this->widgetSchema['date_validite'] = new sfWidgetFormDate(array(
+		'format' => '%month% %year%'
+	));
   }
 }

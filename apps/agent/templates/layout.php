@@ -10,5 +10,6 @@
   </head>
   <body>
     <?php echo $sf_content ?>
+	<a href="<?php echo url_for('login/logout') ?>">Logout</a>
   </body>
 </html>
