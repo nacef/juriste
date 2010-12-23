@@ -1,0 +1,14 @@
+CREATE TABLE dispatch (id_dispatch INT AUTO_INCREMENT, questions INT, PRIMARY KEY(id_dispatch)) ENGINE = INNODB;
+CREATE TABLE qualification_agent (id_qualif_agent INT AUTO_INCREMENT, texte_qualification VARCHAR(45), PRIMARY KEY(id_qualif_agent)) ENGINE = INNODB;
+CREATE TABLE question (id_question INT AUTO_INCREMENT, nom VARCHAR(50), prenom VARCHAR(45), code_postal VARCHAR(5), pays VARCHAR(2), telephone VARCHAR(45), email VARCHAR(45), texte_question TEXT, PRIMARY KEY(id_question)) ENGINE = INNODB;
+CREATE TABLE rdv (id_rdv INT AUTO_INCREMENT, date_rdv DATETIME, id_avocat INT NOT NULL, id_vente INT NOT NULL, commentaire_avocat TEXT, INDEX id_avocat_idx (id_avocat), INDEX id_vente_idx (id_vente), PRIMARY KEY(id_rdv)) ENGINE = INNODB;
+CREATE TABLE traitement_agent (id_traitement_agent INT AUTO_INCREMENT, commentaire_agent VARCHAR(45), id_qualif_agent INT, id_question INT NOT NULL, id_agent INT NOT NULL, INDEX id_qualif_agent_idx (id_qualif_agent), INDEX id_question_idx (id_question), INDEX id_agent_idx (id_agent), PRIMARY KEY(id_traitement_agent)) ENGINE = INNODB;
+CREATE TABLE utilisateur (id_utilisateur INT AUTO_INCREMENT, nom VARCHAR(45), prenom VARCHAR(45), login VARCHAR(45), password VARCHAR(45), type INT, PRIMARY KEY(id_utilisateur)) ENGINE = INNODB;
+CREATE TABLE vente (id_vente INT AUTO_INCREMENT, montant VARCHAR(45), numero_cc VARCHAR(45), cvv2 VARCHAR(45), date_validite VARCHAR(45), nom VARCHAR(45), prenom VARCHAR(45), id_question INT NOT NULL, id_agent INT NOT NULL, INDEX id_question_idx (id_question), INDEX id_agent_idx (id_agent), PRIMARY KEY(id_vente)) ENGINE = INNODB;
+ALTER TABLE rdv ADD CONSTRAINT rdv_id_vente_vente_id_vente FOREIGN KEY (id_vente) REFERENCES vente(id_vente);
+ALTER TABLE rdv ADD CONSTRAINT rdv_id_avocat_utilisateur_id_utilisateur FOREIGN KEY (id_avocat) REFERENCES utilisateur(id_utilisateur);
+ALTER TABLE traitement_agent ADD CONSTRAINT traitement_agent_id_question_question_id_question FOREIGN KEY (id_question) REFERENCES question(id_question);
+ALTER TABLE traitement_agent ADD CONSTRAINT traitement_agent_id_agent_utilisateur_id_utilisateur FOREIGN KEY (id_agent) REFERENCES utilisateur(id_utilisateur);
+ALTER TABLE traitement_agent ADD CONSTRAINT tiqi FOREIGN KEY (id_qualif_agent) REFERENCES qualification_agent(id_qualif_agent);
+ALTER TABLE vente ADD CONSTRAINT vente_id_question_question_id_question FOREIGN KEY (id_question) REFERENCES question(id_question);
+ALTER TABLE vente ADD CONSTRAINT vente_id_agent_utilisateur_id_utilisateur FOREIGN KEY (id_agent) REFERENCES utilisateur(id_utilisateur);

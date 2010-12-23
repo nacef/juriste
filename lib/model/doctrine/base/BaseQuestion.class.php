@@ -15,6 +15,7 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @property string $telephone
  * @property string $email
  * @property string $texte_question
+ * @property timestamp $date_question
  * @property Doctrine_Collection $TraitementAgent
  * @property Doctrine_Collection $Vente
  * 
@@ -26,6 +27,7 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @method string              getTelephone()       Returns the current record's "telephone" value
  * @method string              getEmail()           Returns the current record's "email" value
  * @method string              getTexteQuestion()   Returns the current record's "texte_question" value
+ * @method timestamp           getDateQuestion()    Returns the current record's "date_question" value
  * @method Doctrine_Collection getTraitementAgent() Returns the current record's "TraitementAgent" collection
  * @method Doctrine_Collection getVente()           Returns the current record's "Vente" collection
  * @method Question            setIdQuestion()      Sets the current record's "id_question" value
@@ -36,6 +38,7 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @method Question            setTelephone()       Sets the current record's "telephone" value
  * @method Question            setEmail()           Sets the current record's "email" value
  * @method Question            setTexteQuestion()   Sets the current record's "texte_question" value
+ * @method Question            setDateQuestion()    Sets the current record's "date_question" value
  * @method Question            setTraitementAgent() Sets the current record's "TraitementAgent" collection
  * @method Question            setVente()           Sets the current record's "Vente" collection
  * 
@@ -119,6 +122,15 @@ abstract class BaseQuestion extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => '',
+             ));
+        $this->hasColumn('date_question', 'timestamp', 25, array(
+             'type' => 'timestamp',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 25,
              ));
     }
 

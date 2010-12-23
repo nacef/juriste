@@ -12,6 +12,8 @@ Doctrine_Manager::getInstance()->bindComponent('TraitementAgent', 'doctrine');
  * @property integer $id_qualif_agent
  * @property integer $id_question
  * @property integer $id_agent
+ * @property boolean $rappel
+ * @property timestamp $date_rappel
  * @property QualificationAgent $QualificationAgent
  * @property Question $Question
  * @property Utilisateur $Utilisateur
@@ -21,6 +23,8 @@ Doctrine_Manager::getInstance()->bindComponent('TraitementAgent', 'doctrine');
  * @method integer            getIdQualifAgent()       Returns the current record's "id_qualif_agent" value
  * @method integer            getIdQuestion()          Returns the current record's "id_question" value
  * @method integer            getIdAgent()             Returns the current record's "id_agent" value
+ * @method boolean            getRappel()              Returns the current record's "rappel" value
+ * @method timestamp          getDateRappel()          Returns the current record's "date_rappel" value
  * @method QualificationAgent getQualificationAgent()  Returns the current record's "QualificationAgent" value
  * @method Question           getQuestion()            Returns the current record's "Question" value
  * @method Utilisateur        getUtilisateur()         Returns the current record's "Utilisateur" value
@@ -29,6 +33,8 @@ Doctrine_Manager::getInstance()->bindComponent('TraitementAgent', 'doctrine');
  * @method TraitementAgent    setIdQualifAgent()       Sets the current record's "id_qualif_agent" value
  * @method TraitementAgent    setIdQuestion()          Sets the current record's "id_question" value
  * @method TraitementAgent    setIdAgent()             Sets the current record's "id_agent" value
+ * @method TraitementAgent    setRappel()              Sets the current record's "rappel" value
+ * @method TraitementAgent    setDateRappel()          Sets the current record's "date_rappel" value
  * @method TraitementAgent    setQualificationAgent()  Sets the current record's "QualificationAgent" value
  * @method TraitementAgent    setQuestion()            Sets the current record's "Question" value
  * @method TraitementAgent    setUtilisateur()         Sets the current record's "Utilisateur" value
@@ -86,6 +92,24 @@ abstract class BaseTraitementAgent extends sfDoctrineRecord
              'notnull' => true,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('rappel', 'boolean', null, array(
+             'type' => 'boolean',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'default' => false,
+             ));
+        $this->hasColumn('date_rappel', 'timestamp', 25, array(
+             'type' => 'timestamp',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 25,
              ));
     }
 

@@ -23,6 +23,7 @@ abstract class BaseQuestionForm extends BaseFormDoctrine
       'telephone'      => new sfWidgetFormInputText(),
       'email'          => new sfWidgetFormInputText(),
       'texte_question' => new sfWidgetFormTextarea(),
+      'date_question'  => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -34,6 +35,7 @@ abstract class BaseQuestionForm extends BaseFormDoctrine
       'telephone'      => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'email'          => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'texte_question' => new sfValidatorString(array('required' => false)),
+      'date_question'  => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('question[%s]');

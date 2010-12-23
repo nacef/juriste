@@ -1,4 +1,4 @@
-<?php echo $questionForm->renderFormTag('main/index') ?>
+<form method="POST" action="<?php echo url_for('main/index') ?>">
   <table>
     <?php echo $questionForm ?>
     <tr>

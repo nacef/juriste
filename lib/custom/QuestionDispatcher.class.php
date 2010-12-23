@@ -3,8 +3,10 @@
 class QuestionDispatcher {
 
   public static function getNextAgent() {
-    $agent = UtilisateurTable::getInstance()->createQuery('a')
-      ->where('a.type = 1')
-      ->
+    $agent = DispatchTable::getInstance()->createQuery('d')
+      ->orderBy('d.questions ASC')
+      ->fetchOne();
+      
+    return $agent;
   }
 }

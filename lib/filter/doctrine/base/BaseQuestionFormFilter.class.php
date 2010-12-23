@@ -20,6 +20,7 @@ abstract class BaseQuestionFormFilter extends BaseFormFilterDoctrine
       'telephone'      => new sfWidgetFormFilterInput(),
       'email'          => new sfWidgetFormFilterInput(),
       'texte_question' => new sfWidgetFormFilterInput(),
+      'date_question'  => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
     ));
 
     $this->setValidators(array(
@@ -30,6 +31,7 @@ abstract class BaseQuestionFormFilter extends BaseFormFilterDoctrine
       'telephone'      => new sfValidatorPass(array('required' => false)),
       'email'          => new sfValidatorPass(array('required' => false)),
       'texte_question' => new sfValidatorPass(array('required' => false)),
+      'date_question'  => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
 
     $this->widgetSchema->setNameFormat('question_filters[%s]');
@@ -57,6 +59,7 @@ abstract class BaseQuestionFormFilter extends BaseFormFilterDoctrine
       'telephone'      => 'Text',
       'email'          => 'Text',
       'texte_question' => 'Text',
+      'date_question'  => 'Date',
     );
   }
 }

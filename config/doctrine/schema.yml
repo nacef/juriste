@@ -79,6 +79,13 @@ Question:
       primary: false
       notnull: false
       autoincrement: false
+    date_question:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
   relations:
     TraitementAgent:
       local: id_question
@@ -172,6 +179,21 @@ TraitementAgent:
       unsigned: false
       primary: false
       notnull: true
+      autoincrement: false
+    rappel:
+      type: boolean
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+      default: false
+    date_rappel:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
       autoincrement: false
   relations:
     QualificationAgent:
@@ -323,3 +345,32 @@ Vente:
       local: id_vente
       foreign: id_vente
       type: many
+Dispatch:
+  connection: doctrine
+  tableName: dispatch
+  columns:
+    id_dispatch:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    questions:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Utilisateur:
+      local: id_agent
+      foreign: id_utilisateur
+      type: one
