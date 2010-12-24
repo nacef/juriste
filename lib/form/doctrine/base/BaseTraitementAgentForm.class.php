@@ -22,6 +22,8 @@ abstract class BaseTraitementAgentForm extends BaseFormDoctrine
       'id_agent'            => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => false)),
       'rappel'              => new sfWidgetFormInputCheckbox(),
       'date_rappel'         => new sfWidgetFormDateTime(),
+      'date_creation'       => new sfWidgetFormDateTime(),
+      'date_modification'   => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -32,6 +34,8 @@ abstract class BaseTraitementAgentForm extends BaseFormDoctrine
       'id_agent'            => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'))),
       'rappel'              => new sfValidatorBoolean(array('required' => false)),
       'date_rappel'         => new sfValidatorDateTime(array('required' => false)),
+      'date_creation'       => new sfValidatorDateTime(),
+      'date_modification'   => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('traitement_agent[%s]');

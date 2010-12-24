@@ -70,4 +70,15 @@ class questionActions extends sfActions
       $this->redirect('question/edit?question_id='.$Question->getIdTraitementAgent());
     }
   }
+  
+  public function executeNext(sfWebRequest $request) {
+	$nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
+		->select('t.id_traitement_agent')
+		->where('t.id_qualif_agent is NULL')
+		->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUser())
+		->orderBy('t.date_creation ASC')
+		->fetchOne();
+		
+		$this->redirect('question/edit?question_id=' . $nextQuestion->getIdTraitementAgent());
+  }
 }

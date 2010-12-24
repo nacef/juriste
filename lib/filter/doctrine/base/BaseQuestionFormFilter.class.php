@@ -20,7 +20,8 @@ abstract class BaseQuestionFormFilter extends BaseFormFilterDoctrine
       'telephone'      => new sfWidgetFormFilterInput(),
       'email'          => new sfWidgetFormFilterInput(),
       'texte_question' => new sfWidgetFormFilterInput(),
-      'date_question'  => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
+      'date_question'  => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'updated_at'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
 
     $this->setValidators(array(
@@ -32,6 +33,7 @@ abstract class BaseQuestionFormFilter extends BaseFormFilterDoctrine
       'email'          => new sfValidatorPass(array('required' => false)),
       'texte_question' => new sfValidatorPass(array('required' => false)),
       'date_question'  => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'updated_at'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
 
     $this->widgetSchema->setNameFormat('question_filters[%s]');
@@ -60,6 +62,7 @@ abstract class BaseQuestionFormFilter extends BaseFormFilterDoctrine
       'email'          => 'Text',
       'texte_question' => 'Text',
       'date_question'  => 'Date',
+      'updated_at'     => 'Date',
     );
   }
 }

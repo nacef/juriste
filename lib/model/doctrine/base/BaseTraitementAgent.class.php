@@ -127,5 +127,21 @@ abstract class BaseTraitementAgent extends sfDoctrineRecord
         $this->hasOne('Utilisateur', array(
              'local' => 'id_agent',
              'foreign' => 'id_utilisateur'));
+
+        $timestampable0 = new Doctrine_Template_Timestampable(array(
+             'created' => 
+             array(
+              'name' => 'date_creation',
+              'type' => 'timestamp',
+              'format' => 'Y-m-d H:i:s',
+             ),
+             'updated' => 
+             array(
+              'name' => 'date_modification',
+              'type' => 'timestamp',
+              'format' => 'Y-m-d H:i:s',
+             ),
+             ));
+        $this->actAs($timestampable0);
     }
 }

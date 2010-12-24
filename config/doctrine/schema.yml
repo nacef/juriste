@@ -23,6 +23,12 @@ QualificationAgent:
 Question:
   connection: doctrine
   tableName: question
+  actAs:
+    Timestampable:
+      created:
+        name: date_question
+        type: timestamp
+        format: Y-m-d H:i:s
   columns:
     id_question:
       type: integer(4)
@@ -74,13 +80,6 @@ Question:
       autoincrement: false
     texte_question:
       type: string()
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    date_question:
-      type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false
@@ -152,6 +151,16 @@ Rdv:
 TraitementAgent:
   connection: doctrine
   tableName: traitement_agent
+  actAs:
+    Timestampable:
+      created:
+        name: date_creation
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: date_modification
+        type: timestamp
+        format: Y-m-d H:i:s
   columns:
     id_traitement_agent:
       type: integer(4)
