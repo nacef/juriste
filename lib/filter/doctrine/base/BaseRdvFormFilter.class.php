@@ -13,14 +13,16 @@ abstract class BaseRdvFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'date_rdv'           => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
+      'date_debut_rdv'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
+      'date_fin_rdv'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'id_avocat'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => true)),
       'id_vente'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Vente'), 'add_empty' => true)),
       'commentaire_avocat' => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'date_rdv'           => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'date_debut_rdv'     => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'date_fin_rdv'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'id_avocat'          => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Utilisateur'), 'column' => 'id_utilisateur')),
       'id_vente'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Vente'), 'column' => 'id_vente')),
       'commentaire_avocat' => new sfValidatorPass(array('required' => false)),
@@ -44,7 +46,8 @@ abstract class BaseRdvFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id_rdv'             => 'Number',
-      'date_rdv'           => 'Date',
+      'date_debut_rdv'     => 'Date',
+      'date_fin_rdv'       => 'Date',
       'id_avocat'          => 'ForeignKey',
       'id_vente'           => 'ForeignKey',
       'commentaire_avocat' => 'Text',

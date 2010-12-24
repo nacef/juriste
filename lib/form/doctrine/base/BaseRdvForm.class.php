@@ -16,7 +16,8 @@ abstract class BaseRdvForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'id_rdv'             => new sfWidgetFormInputHidden(),
-      'date_rdv'           => new sfWidgetFormDateTime(),
+      'date_debut_rdv'     => new sfWidgetFormDateTime(),
+      'date_fin_rdv'       => new sfWidgetFormDateTime(),
       'id_avocat'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => false)),
       'id_vente'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Vente'), 'add_empty' => false)),
       'commentaire_avocat' => new sfWidgetFormTextarea(),
@@ -24,7 +25,8 @@ abstract class BaseRdvForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id_rdv'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_rdv')), 'empty_value' => $this->getObject()->get('id_rdv'), 'required' => false)),
-      'date_rdv'           => new sfValidatorDateTime(array('required' => false)),
+      'date_debut_rdv'     => new sfValidatorDateTime(array('required' => false)),
+      'date_fin_rdv'       => new sfValidatorDateTime(array('required' => false)),
       'id_avocat'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'))),
       'id_vente'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Vente'))),
       'commentaire_avocat' => new sfValidatorString(array('required' => false)),

@@ -105,7 +105,14 @@ Rdv:
       unsigned: false
       primary: true
       autoincrement: true
-    date_rdv:
+    date_debut_rdv:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    date_fin_rdv:
       type: timestamp(25)
       fixed: false
       unsigned: false
