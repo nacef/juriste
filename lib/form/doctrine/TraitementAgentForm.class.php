@@ -12,9 +12,10 @@ class TraitementAgentForm extends BaseTraitementAgentForm
 {
   public function configure()
   {
+    unset($this['date_creation'], $this['date_modification']);
+    
     $this->widgetSchema['commentaire_agent'] = new sfWidgetFormTextarea();
     $this->widgetSchema['id_agent'] = new sfWidgetFormInputHidden();
     $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden();
-//    $this->widgetSchema->setNameFormat('%s');
   }
 }

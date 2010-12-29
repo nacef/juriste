@@ -249,33 +249,4 @@ Question:
     texte_question: 'Lorem ipsum dolor sit'
     date_question: '2010-12-26 00:10:57'
     updated_at: '2010-12-26 00:10:57'
-Utilisateur:
-  Utilisateur_1:
-    nom: LABIDI
-    prenom: Nacef
-    login: nacef
-    password: whassup
-    type: '1'
-  Utilisateur_2:
-    nom: Tounsi
-    prenom: Mohamed
-    login: mohamed
-    password: whassup
-    type: '1'
-  Utilisateur_3:
-    nom: DOE
-    prenom: John
-    login: john
-    password: whassup
-    type: '1'
-  Utilisateur_4:
-    nom: DOE
-    prenom: Jane
-    login: jane
-    password: whassup
-    type: '1'
-QualificationAgent:
-  QualificationAgent_1:
-    texte_qualification: 'Pas de réponse'
-  QualificationAgent_2:
-    texte_qualification: 'A rappeler'
+

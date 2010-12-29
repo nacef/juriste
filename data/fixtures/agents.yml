@@ -1,0 +1,33 @@
+Utilisateur:
+  Utilisateur_1:
+    nom: LABIDI
+    prenom: Nacef
+    login: nacef
+    password: whassup
+    type: '1'
+  Utilisateur_2:
+    nom: Tounsi
+    prenom: Mohamed
+    login: mohamed
+    password: whassup
+    type: '1'
+  Utilisateur_3:
+    nom: DOE
+    prenom: John
+    login: john
+    password: whassup
+    type: '1'
+  Utilisateur_4:
+    nom: DOE
+    prenom: Jane
+    login: jane
+    password: whassup
+    type: '1'
+<?php for ($i = 1; $i <= 10; $i++): ?>
+  Avocat_<?php echo $i ?>:
+    nom: avocat_<?php echo $i . "\n" ?>
+    prenom: juriste
+    login: avocat_<?php echo $i . "\n" ?>
+    password: whassup
+    type : '2'
+<?php endfor ?>

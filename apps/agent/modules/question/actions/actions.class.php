@@ -42,8 +42,8 @@ class questionActions extends sfActions
   public function executeUpdate(sfWebRequest $request)
   {
     $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($Question = Doctrine_Core::getTable('TraitementAgent')->find(array($request->getParameter('id_traitement_agent'))), sprintf('Object Question does not exist (%s).', $request->getParameter('id_traitement_agent')));
-    $this->form = new TraitementAgentForm($Question);
+    $this->forward404Unless($this->Question = Doctrine_Core::getTable('TraitementAgent')->find(array($request->getParameter('question_id'))), sprintf('Object Question does not exist (%s).', $request->getParameter('question_id')));
+    $this->form = new TraitementAgentForm($this->Question);
 
     $this->processForm($request, $this->form);
 

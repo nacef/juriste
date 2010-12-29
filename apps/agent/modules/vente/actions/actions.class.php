@@ -19,7 +19,9 @@ class venteActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
+    $question_id = $request->getParameter('question');
     $this->form = new VenteForm();
+    $this->form->setQuestionId($question_id);
   }
 
   public function executeCreate(sfWebRequest $request)

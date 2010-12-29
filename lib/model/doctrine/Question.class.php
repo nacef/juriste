@@ -12,4 +12,24 @@
  */
 class Question extends BaseQuestion
 {
+
+  public function save(Doctrine_Connection $conn = null) {
+    $new = $this->isNew() ? true : false;
+    
+    $question = parent::save($conn);
+    
+    if ($new) {
+      $traitement = new TraitementAgent();
+      $traitement->setQuestion($this);
+      $traitement->setIdAgent(QuestionDispatcher::getNextAgent()->getIdAgent());
+      $traitement->save();
+
+      $dispatch = DispatchTable::getInstance()->findOneByIdAgent($traitement->getIdAgent());
+      $dispatch->setQuestions($dispatch->getQuestions() + 1);
+      $dispatch->save();
+    }    
+    
+    return $question;
+  }
+
 }

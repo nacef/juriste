@@ -23,18 +23,8 @@ class mainActions extends sfActions
       if ($this->questionForm->isValid()) {
         
         Doctrine_Manager::connection()->beginTransaction();
-        $nextAgent = QuestionDispatcher::getNextAgent()->getIdAgent();
-        
+
         $question = $this->questionForm->save();
-        
-        $traitAgent = new TraitementAgent();
-        $traitAgent->setQuestion($question);
-        $traitAgent->setIdAgent($nextAgent);
-        $traitAgent->save();
-        
-        $dispatch = DispatchTable::getInstance()->findOneByIdAgent($nextAgent);
-        $dispatch->setQuestions($dispatch->getQuestions() + 1);
-        $dispatch->save();
         
         Doctrine_Manager::connection()->commit();
         

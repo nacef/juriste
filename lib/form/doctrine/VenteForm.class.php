@@ -10,12 +10,23 @@
  */
 class VenteForm extends BaseVenteForm
 {
+  private $question_id;
+  
   public function configure()
   {
-	$this->widgetSchema['id_question'] = new sfWidgetFormInputHidden();
-	$this->widgetSchema['id_agent'] = new sfWidgetFormInputHidden();
-	$this->widgetSchema['date_validite'] = new sfWidgetFormDate(array(
-		'format' => '%month% %year%'
-	));
+	  $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden(array(), array(
+	    'value' => $this->question_id
+	  ));
+	  $this->widgetSchema['id_agent'] = new sfWidgetFormInputHidden(array(), array(
+      'value' => sfContext::getInstance()->getUser()->getLoggedUser()
+    ));
+	  $this->widgetSchema['date_validite'] = new sfWidgetFormDate(array(
+		  'format' => '%day% %month% %year%'
+	  ));
   }
+  
+  public function setQuestionId($question_id) {
+    $this->question_id = $question_id;
+  }
+  
 }

@@ -20,7 +20,7 @@ class loginActions extends sfActions
 		if ($agent) {
 			$this->getUser()->setAuthenticated(true);
 			$this->getUser()->setLoggedUser($agent->getIdUtilisateur());
-			$this->redirect('question/index');
+			$this->redirect('@homepage');
 		}
 	}
   }

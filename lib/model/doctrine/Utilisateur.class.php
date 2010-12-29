@@ -12,4 +12,19 @@
  */
 class Utilisateur extends BaseUtilisateur
 {
+
+  public function save(Doctrine_Connection $conn = null) {
+    $new = $this->isNew() ? true : false;
+    
+    $utilisateur = parent::save($conn);
+    
+    if ($this->getType() == 1 && $new) {
+      $dispatch = new Dispatch();
+      $dispatch->setIdAgent($this->getIdUtilisateur());
+      $dispatch->setQuestions(0);
+      $dispatch->save();            
+    }    
+    
+    return $utilisateur;
+  }
 }
