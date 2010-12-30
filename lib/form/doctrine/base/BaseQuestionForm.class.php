@@ -32,7 +32,7 @@ abstract class BaseQuestionForm extends BaseFormDoctrine
       'nom'            => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'prenom'         => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'code_postal'    => new sfValidatorString(array('max_length' => 5, 'required' => false)),
-      'pays'           => new sfValidatorString(array('max_length' => 2, 'required' => false)),
+      'pays'           => new sfValidatorString(array('max_length' => 50, 'required' => false)),
       'telephone'      => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'email'          => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'texte_question' => new sfValidatorString(array('required' => false)),

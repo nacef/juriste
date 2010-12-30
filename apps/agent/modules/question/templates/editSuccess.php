@@ -32,6 +32,10 @@
       <th>Email :</th>
       <td><?php echo $Question->getQuestion()->getEmail() ?></td>
     </tr>
+    <tr>
+      <th>Question :</th>
+      <td><?php echo $Question->getQuestion()->getTexteQuestion() ?></td>
+    </tr>
   </tbody>
 </table>
 

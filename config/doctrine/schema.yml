@@ -58,7 +58,7 @@ Question:
       notnull: false
       autoincrement: false
     pays:
-      type: string(2)
+      type: string(50)
       fixed: false
       unsigned: false
       primary: false

@@ -67,18 +67,22 @@ class questionActions extends sfActions
     {
       $Question = $form->save();
 
-      $this->redirect('question/edit?question_id='.$Question->getIdTraitementAgent());
+//      $this->redirect('question/edit?question_id='.$Question->getIdTraitementAgent());
+      $this->redirect('question/next');
     }
   }
   
   public function executeNext(sfWebRequest $request) {
-	$nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
-		->select('t.id_traitement_agent')
-		->where('t.id_qualif_agent is NULL')
-		->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUser())
-		->orderBy('t.date_creation ASC')
-		->fetchOne();
+	  $nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
+		  ->select('t.id_traitement_agent')
+		  ->where('t.id_qualif_agent is NULL')
+		  ->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUser())
+		  ->orderBy('t.date_creation ASC')
+		  ->fetchOne();
 		
-		$this->redirect('question/edit?question_id=' . $nextQuestion->getIdTraitementAgent());
+		if ($nextQuestion)
+  		$this->redirect('question/edit?question_id=' . $nextQuestion->getIdTraitementAgent());
+  	else
+  	  $this->redirect('main/index');
   }
 }

@@ -84,14 +84,14 @@ abstract class BaseQuestion extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 5,
              ));
-        $this->hasColumn('pays', 'string', 2, array(
+        $this->hasColumn('pays', 'string', 50, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
-             'length' => 2,
+             'length' => 50,
              ));
         $this->hasColumn('telephone', 'string', 45, array(
              'type' => 'string',
