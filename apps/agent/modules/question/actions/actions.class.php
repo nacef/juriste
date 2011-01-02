@@ -12,9 +12,7 @@ class questionActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
-    $this->Questions = Doctrine_Core::getTable('TraitementAgent')
-      ->createQuery('a')
-      ->execute();
+    $this->forward('question','next');
   }
 
   public function executeNew(sfWebRequest $request)
@@ -74,14 +72,15 @@ class questionActions extends sfActions
   
   public function executeNext(sfWebRequest $request) {
 	  $nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
-		  ->select('t.id_traitement_agent')
 		  ->where('t.id_qualif_agent is NULL')
-		  ->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUser())
+		  ->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUserId())
 		  ->orderBy('t.date_creation ASC')
 		  ->fetchOne();
 		
-		if ($nextQuestion)
-  		$this->redirect('question/edit?question_id=' . $nextQuestion->getIdTraitementAgent());
+		if ($nextQuestion) {
+		  $this->questionForm = new QuestionForm($nextQuestion->getQuestion());
+		  $this->traitementAgentForm = new TraitementAgentForm($nextQuestion);
+		}
   	else
   	  $this->redirect('main/index');
   }

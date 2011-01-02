@@ -13,5 +13,8 @@ class QuestionForm extends BaseQuestionForm
   public function configure()
   {
     unset($this['date_question'], $this['updated_at']);
+    
+    $this->widgetSchema->addFormFormatter('reality', new RealitySchemaFormatter($this->widgetSchema));
+    $this->widgetSchema->setFormFormatterName('reality');
   }
 }

@@ -1,0 +1,17 @@
+.error {
+	padding: 7px;
+	margin: 3px;
+	background-color: #FCC;
+	border: 1px solid #F00;
+	font-family: arial;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	color: #000;
+	float: left;
+	width: 98%;
+	-moz-border-radius:5px;
+	-webkit-border-radius: 5px;
+}
+

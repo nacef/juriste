@@ -18,4 +18,8 @@ class mainActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
   }
+  
+  public function executeDashboard(sfWebRequest $request) {
+    
+  }
 }

@@ -19,7 +19,8 @@ class loginActions extends sfActions
 		$agent = UtilisateurTable::getInstance()->findOneByLoginAndPasswordAndType($login, $password, 1);
 		if ($agent) {
 			$this->getUser()->setAuthenticated(true);
-			$this->getUser()->setLoggedUser($agent->getIdUtilisateur());
+			$this->getUser()->setLoggedUserId($agent->getIdUtilisateur());
+			$this->getUser()->setLoggedUser($agent->getPrenom() . ' ' . $agent->getNom());
 			$this->redirect('@homepage');
 		}
 	}
