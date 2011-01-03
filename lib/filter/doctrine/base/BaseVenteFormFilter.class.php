@@ -13,12 +13,12 @@ abstract class BaseVenteFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'montant'           => new sfWidgetFormFilterInput(),
-      'numero_cc'         => new sfWidgetFormFilterInput(),
-      'cvv2'              => new sfWidgetFormFilterInput(),
+      'montant'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'numero_cc'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'cvv2'              => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'date_validite'     => new sfWidgetFormFilterInput(),
-      'nom'               => new sfWidgetFormFilterInput(),
-      'prenom'            => new sfWidgetFormFilterInput(),
+      'nom'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'prenom'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'id_question'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Question'), 'add_empty' => true)),
       'id_agent'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => true)),
       'date_creation'     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),

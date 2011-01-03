@@ -1,0 +1,5 @@
+all:
+  layout: login
+  javascripts:    [jquery-1.4.2.min.js, jquery.validate.js, loginform.validation.js]
+  stylesheets:    [blue/styles.css, loginform.css]
+

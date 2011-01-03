@@ -63,6 +63,8 @@ class questionActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
+      Doctrine_Manager::connection()->beginTransaction();
+      
       $Question = $form->save();
 
       if ($Question->getIdQualifAgent() == 3) {
@@ -70,12 +72,18 @@ class questionActions extends sfActions
         $venteForm->bind($request->getParameter('vente'));
         if ($venteForm->isValid()) {
           $vente = $venteForm->save();
+          Doctrine_Manager::connection()->commit();
+        } else {
+          Doctrine_Manager::connection()->rollback();
         }
       } else if ($Question->getIdQualifAgent() == 1) {
         $rappelForm = new RappelForm();
         $rappelForm->bind($request->getParameter('rappel'));
         if ($rappelForm->isValid()) {
           $rappel = $rappelForm->save();
+          Doctrine_Manager::connection()->commit();
+        } else {
+          Doctrine_Manager::connection()->rollback();
         }
       }
       $this->redirect('question/next');
@@ -92,8 +100,30 @@ class questionActions extends sfActions
 		if ($nextQuestion) {
 		  $this->questionForm = new QuestionForm($nextQuestion->getQuestion());
 		  $this->traitementAgentForm = new TraitementAgentForm($nextQuestion);
+/*		  return $this->renderPartial('agentQuestion', array(
+		    'questionForm' => $this->questionForm,
+		    'traitementAgentForm' => $this->traitementAgentForm
+		  ));*/
 		}
   	else
   	  $this->redirect('main/index');
   }
+  
+  public function executeNextQuestionPartial(sfWebRequest $request) {
+	  $nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
+		  ->where('t.id_qualif_agent is NULL')
+		  ->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUserId())
+		  ->orderBy('t.date_creation ASC')
+		  ->fetchOne();
+		
+		if ($nextQuestion) {
+		  $this->questionForm = new QuestionForm($nextQuestion->getQuestion());
+		  $this->traitementAgentForm = new TraitementAgentForm($nextQuestion);
+		  return $this->renderPartial('agentQuestion', array(
+		    'questionForm' => $this->questionForm,
+		    'traitementAgentForm' => $this->traitementAgentForm
+		  ));
+		}
+  }
+  
 }

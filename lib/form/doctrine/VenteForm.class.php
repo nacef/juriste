@@ -29,7 +29,7 @@ class VenteForm extends BaseVenteForm
     ));
     
     $this->widgetSchema['date_validite'] = new sfWidgetFormCCExpirationDate();
-
+    
     $this->widgetSchema->addFormFormatter('reality', new RealitySchemaFormatter($this->widgetSchema));
     $this->widgetSchema->setFormFormatterName('reality');
   }
@@ -40,7 +40,7 @@ class VenteForm extends BaseVenteForm
   
   public function processValues($values) {
     $date_validite = $values['date_validite'];
-    $expiry = $date_validite['month'].'-'.$date_validite['year'];
+    $expiry = str_pad($date_validite['month'], 2, ' ', STR_PAD_LEFT).'-'.$date_validite['year'];
     $values['date_validite'] = $expiry;
     return $values;
   }

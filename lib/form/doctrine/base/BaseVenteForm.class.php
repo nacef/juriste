@@ -30,12 +30,12 @@ abstract class BaseVenteForm extends BaseFormDoctrine
 
     $this->setValidators(array(
       'id_vente'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_vente')), 'empty_value' => $this->getObject()->get('id_vente'), 'required' => false)),
-      'montant'           => new sfValidatorString(array('max_length' => 45, 'required' => false)),
-      'numero_cc'         => new sfValidatorString(array('max_length' => 45, 'required' => false)),
-      'cvv2'              => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'montant'           => new sfValidatorPass(),
+      'numero_cc'         => new sfValidatorString(array('max_length' => 16)),
+      'cvv2'              => new sfValidatorString(array('max_length' => 3)),
       'date_validite'     => new sfValidatorPass(array('required' => false)),
-      'nom'               => new sfValidatorString(array('max_length' => 45, 'required' => false)),
-      'prenom'            => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'nom'               => new sfValidatorString(array('max_length' => 45)),
+      'prenom'            => new sfValidatorString(array('max_length' => 45)),
       'id_question'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Question'))),
       'id_agent'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'))),
       'date_creation'     => new sfValidatorDateTime(),

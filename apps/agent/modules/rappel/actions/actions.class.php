@@ -19,4 +19,12 @@ class rappelActions extends sfActions
     return $this->renderText($rappelForm);
   }
   
+  public function executeIndex(sfWebRequest $request) {
+    $this->rappels = RappelTable::getInstance()->createQuery('r')
+      ->where('r.id_agent = ?', $this->getUser()->getLoggedUserId())
+      ->andWhere('r.cloture = ?', false)
+      ->orderBy('r.date_rappel ASC')
+      ->execute();
+  }
+  
 }

@@ -20,6 +20,8 @@ class mainActions extends sfActions
   }
   
   public function executeDashboard(sfWebRequest $request) {
+    $this->questionsCount = $this->getUser()->getQuestionsCount();
+    $this->rappelsCount = $this->getUser()->getRappelsCount();
   }
   
 }

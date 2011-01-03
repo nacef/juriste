@@ -10,6 +10,7 @@ Doctrine_Manager::getInstance()->bindComponent('Rappel', 'doctrine');
  * @property integer $id_rappel
  * @property integer $id_agent
  * @property timestamp $date_rappel
+ * @property boolean $cloture
  * @property integer $id_question
  * @property Question $Question
  * @property Utilisateur $Utilisateur
@@ -17,12 +18,14 @@ Doctrine_Manager::getInstance()->bindComponent('Rappel', 'doctrine');
  * @method integer     getIdRappel()    Returns the current record's "id_rappel" value
  * @method integer     getIdAgent()     Returns the current record's "id_agent" value
  * @method timestamp   getDateRappel()  Returns the current record's "date_rappel" value
+ * @method boolean     getCloture()     Returns the current record's "cloture" value
  * @method integer     getIdQuestion()  Returns the current record's "id_question" value
  * @method Question    getQuestion()    Returns the current record's "Question" value
  * @method Utilisateur getUtilisateur() Returns the current record's "Utilisateur" value
  * @method Rappel      setIdRappel()    Sets the current record's "id_rappel" value
  * @method Rappel      setIdAgent()     Sets the current record's "id_agent" value
  * @method Rappel      setDateRappel()  Sets the current record's "date_rappel" value
+ * @method Rappel      setCloture()     Sets the current record's "cloture" value
  * @method Rappel      setIdQuestion()  Sets the current record's "id_question" value
  * @method Rappel      setQuestion()    Sets the current record's "Question" value
  * @method Rappel      setUtilisateur() Sets the current record's "Utilisateur" value
@@ -59,9 +62,13 @@ abstract class BaseRappel extends sfDoctrineRecord
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
-             'notnull' => false,
+             'notnull' => true,
              'autoincrement' => false,
              'length' => 25,
+             ));
+        $this->hasColumn('cloture', 'boolean', null, array(
+             'type' => 'boolean',
+             'notnull' => true,
              ));
         $this->hasColumn('id_question', 'integer', 4, array(
              'type' => 'integer',

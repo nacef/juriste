@@ -18,4 +18,18 @@ class myUser extends sfBasicSecurityUser
 		$this->setAttribute('logged_user_id', $user_id);
 	}
 
+  public function getQuestionsCount() {
+    return TraitementAgentTable::getInstance()->createQuery('t')
+      ->select('COUNT(t.id_traitement_agent)')
+      ->where('t.id_qualif_agent is NULL')
+      ->andWhere('t.id_agent = ?', $this->getLoggedUserId())
+      ->fetchOne(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+  }
+  
+  public function getRappelsCount() {
+    return RappelTable::getInstance()->createQuery('r')
+      ->select('COUNT(r.id_rappel)')
+      ->where('r.id_agent = ?', $this->getLoggedUserId())
+      ->fetchOne(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+  }
 }

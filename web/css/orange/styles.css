@@ -502,7 +502,7 @@ td a, td a:visited	{
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	height: 25px;
-	background-image: url(../images/button_highlighter.png);
+	background-image: url(/images/button_highlighter.png);
 	background-repeat: repeat-x;
 	margin-top: 0px;
 	margin-right: 7px;

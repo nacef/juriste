@@ -36,8 +36,8 @@
           <ul>
             <li><a id="menu-main_dashboard" href="<?php echo url_for('main/dashboard') ?>" class="active">Tableau de bord</a></li>
             <li><a id="menu-question_index" href="<?php echo url_for('question/index') ?>">Questions</a></li>
-            <li><a href="#">Rappels clients</a></li>
-            <li><a href="#">Ventes</a></li>
+            <li><a href="<?php echo url_for('rappel/index') ?>">Rappels clients</a></li>
+            <li><a href="<?php echo url_for('vente/index') ?>">Ventes</a></li>
             <li><a href="#">Stats</a></li>
           </ul>
         </div>

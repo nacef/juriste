@@ -13,7 +13,8 @@ class venteActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     $this->Ventes = Doctrine_Core::getTable('Vente')
-      ->createQuery('a')
+      ->createQuery('v')
+      ->where('v.id_agent = ?', $this->getUser()->getLoggedUserId())
       ->execute();
   }
 
