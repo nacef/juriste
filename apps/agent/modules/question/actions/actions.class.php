@@ -71,6 +71,12 @@ class questionActions extends sfActions
         if ($venteForm->isValid()) {
           $vente = $venteForm->save();
         }
+      } else if ($Question->getIdQualifAgent() == 1) {
+        $rappelForm = new RappelForm();
+        $rappelForm->bind($request->getParameter('rappel'));
+        if ($rappelForm->isValid()) {
+          $rappel = $rappelForm->save();
+        }
       }
       $this->redirect('question/next');
     }
