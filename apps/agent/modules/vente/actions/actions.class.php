@@ -72,4 +72,26 @@ class venteActions extends sfActions
       $this->redirect('vente/edit?id_vente='.$Vente->getIdVente());
     }
   }
+  
+  public function executeForm(sfWebRequest $request) {
+    $vente = new Vente();
+    $vente->setIdAgent($this->getUser()->getLoggedUserId());
+    $vente->setIdQuestion($request->getParameter('id_question'));
+    $venteForm = new VenteForm($vente);
+    return $this->renderText($venteForm);
+  }
+
+  public function executeFormTest(sfWebRequest $request) {
+    $vente = new Vente();
+    $vente->setIdAgent($this->getUser()->getLoggedUserId());
+    $vente->setQuestion(QuestionTable::getInstance()->find(20));
+    $this->venteForm = new VenteForm($vente);
+    if ($request->isMethod('post')) {
+      $this->venteForm->bind($request->getParameter('vente'));
+      if ($this->venteForm->isValid()) {
+        $this->venteForm->save();
+      }
+    }
+  }
+
 }

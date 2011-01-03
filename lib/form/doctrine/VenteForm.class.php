@@ -14,19 +14,35 @@ class VenteForm extends BaseVenteForm
   
   public function configure()
   {
-	  $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden(array(), array(
-	    'value' => $this->question_id
-	  ));
+    unset($this['date_creation'], $this['date_modification']);
+    
+    if ($this->question_id) {
+  	  $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden(array(), array(
+	      'value' => $this->question_id
+  	  ));    
+    } else {
+  	  $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden();        
+    }
+	  
 	  $this->widgetSchema['id_agent'] = new sfWidgetFormInputHidden(array(), array(
-      'value' => sfContext::getInstance()->getUser()->getLoggedUser()
+      'value' => sfContext::getInstance()->getUser()->getLoggedUserId()
     ));
-	  $this->widgetSchema['date_validite'] = new sfWidgetFormDate(array(
-		  'format' => '%day% %month% %year%'
-	  ));
+    
+    $this->widgetSchema['date_validite'] = new sfWidgetFormCCExpirationDate();
+
+    $this->widgetSchema->addFormFormatter('reality', new RealitySchemaFormatter($this->widgetSchema));
+    $this->widgetSchema->setFormFormatterName('reality');
   }
   
   public function setQuestionId($question_id) {
     $this->question_id = $question_id;
+  }
+  
+  public function processValues($values) {
+    $date_validite = $values['date_validite'];
+    $expiry = $date_validite['month'].'-'.$date_validite['year'];
+    $values['date_validite'] = $expiry;
+    return $values;
   }
   
 }

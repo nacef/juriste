@@ -17,6 +17,7 @@ Doctrine_Manager::getInstance()->bindComponent('Utilisateur', 'doctrine');
  * @property Doctrine_Collection $TraitementAgent
  * @property Doctrine_Collection $Vente
  * @property Doctrine_Collection $Dispatch
+ * @property Doctrine_Collection $Rappel
  * 
  * @method integer             getIdUtilisateur()   Returns the current record's "id_utilisateur" value
  * @method string              getNom()             Returns the current record's "nom" value
@@ -28,6 +29,7 @@ Doctrine_Manager::getInstance()->bindComponent('Utilisateur', 'doctrine');
  * @method Doctrine_Collection getTraitementAgent() Returns the current record's "TraitementAgent" collection
  * @method Doctrine_Collection getVente()           Returns the current record's "Vente" collection
  * @method Doctrine_Collection getDispatch()        Returns the current record's "Dispatch" collection
+ * @method Doctrine_Collection getRappel()          Returns the current record's "Rappel" collection
  * @method Utilisateur         setIdUtilisateur()   Sets the current record's "id_utilisateur" value
  * @method Utilisateur         setNom()             Sets the current record's "nom" value
  * @method Utilisateur         setPrenom()          Sets the current record's "prenom" value
@@ -38,6 +40,7 @@ Doctrine_Manager::getInstance()->bindComponent('Utilisateur', 'doctrine');
  * @method Utilisateur         setTraitementAgent() Sets the current record's "TraitementAgent" collection
  * @method Utilisateur         setVente()           Sets the current record's "Vente" collection
  * @method Utilisateur         setDispatch()        Sets the current record's "Dispatch" collection
+ * @method Utilisateur         setRappel()          Sets the current record's "Rappel" collection
  * 
  * @package    juriste
  * @subpackage model
@@ -120,6 +123,10 @@ abstract class BaseUtilisateur extends sfDoctrineRecord
              'foreign' => 'id_agent'));
 
         $this->hasMany('Dispatch', array(
+             'local' => 'id_utilisateur',
+             'foreign' => 'id_agent'));
+
+        $this->hasMany('Rappel', array(
              'local' => 'id_utilisateur',
              'foreign' => 'id_agent'));
     }

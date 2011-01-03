@@ -196,21 +196,6 @@ TraitementAgent:
       primary: false
       notnull: true
       autoincrement: false
-    rappel:
-      type: boolean
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-      default: false
-    date_rappel:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
   relations:
     QualificationAgent:
       local: id_qualif_agent
@@ -285,6 +270,16 @@ Utilisateur:
 Vente:
   connection: doctrine
   tableName: vente
+  actAs:
+    Timestampable:
+      created:
+        name: date_creation
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: date_modification
+        type: timestamp
+        format: Y-m-d H:i:s
   columns:
     id_vente:
       type: integer(4)
@@ -314,7 +309,7 @@ Vente:
       notnull: false
       autoincrement: false
     date_validite:
-      type: timestamp(25)
+      type: varchar(25)
       fixed: false
       unsigned: false
       primary: false
@@ -386,6 +381,56 @@ Dispatch:
       notnull: false
       autoincrement: false
   relations:
+    Utilisateur:
+      local: id_agent
+      foreign: id_utilisateur
+      type: one
+Rappel:
+  connection: doctrine
+  tableName: rappel
+  actAs:
+    Timestampable:
+      created:
+        name: date_creation
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: date_modification
+        type: timestamp
+        format: Y-m-d H:i:s
+  columns:
+    id_rappel:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    id_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    date_rappel:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_question:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Question:
+      local: id_question
+      foreign: id_question
+      type: one
     Utilisateur:
       local: id_agent
       foreign: id_utilisateur

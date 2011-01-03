@@ -20,6 +20,6 @@ class mainActions extends sfActions
   }
   
   public function executeDashboard(sfWebRequest $request) {
-    
   }
+  
 }

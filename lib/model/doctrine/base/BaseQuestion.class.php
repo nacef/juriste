@@ -17,6 +17,7 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @property string $texte_question
  * @property Doctrine_Collection $TraitementAgent
  * @property Doctrine_Collection $Vente
+ * @property Doctrine_Collection $Rappel
  * 
  * @method integer             getIdQuestion()      Returns the current record's "id_question" value
  * @method string              getNom()             Returns the current record's "nom" value
@@ -28,6 +29,7 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @method string              getTexteQuestion()   Returns the current record's "texte_question" value
  * @method Doctrine_Collection getTraitementAgent() Returns the current record's "TraitementAgent" collection
  * @method Doctrine_Collection getVente()           Returns the current record's "Vente" collection
+ * @method Doctrine_Collection getRappel()          Returns the current record's "Rappel" collection
  * @method Question            setIdQuestion()      Sets the current record's "id_question" value
  * @method Question            setNom()             Sets the current record's "nom" value
  * @method Question            setPrenom()          Sets the current record's "prenom" value
@@ -38,6 +40,7 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @method Question            setTexteQuestion()   Sets the current record's "texte_question" value
  * @method Question            setTraitementAgent() Sets the current record's "TraitementAgent" collection
  * @method Question            setVente()           Sets the current record's "Vente" collection
+ * @method Question            setRappel()          Sets the current record's "Rappel" collection
  * 
  * @package    juriste
  * @subpackage model
@@ -130,6 +133,10 @@ abstract class BaseQuestion extends sfDoctrineRecord
              'foreign' => 'id_question'));
 
         $this->hasMany('Vente', array(
+             'local' => 'id_question',
+             'foreign' => 'id_question'));
+
+        $this->hasMany('Rappel', array(
              'local' => 'id_question',
              'foreign' => 'id_question'));
 

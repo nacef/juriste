@@ -65,7 +65,13 @@ class questionActions extends sfActions
     {
       $Question = $form->save();
 
-//      $this->redirect('question/edit?question_id='.$Question->getIdTraitementAgent());
+      if ($Question->getIdQualifAgent() == 3) {
+        $venteForm = new VenteForm();
+        $venteForm->bind($request->getParameter('vente'));
+        if ($venteForm->isValid()) {
+          $vente = $venteForm->save();
+        }
+      }
       $this->redirect('question/next');
     }
   }
