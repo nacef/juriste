@@ -15,6 +15,7 @@ abstract class BaseVenteForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+<<<<<<< HEAD
       'id_vente'      => new sfWidgetFormInputHidden(),
       'code_client'       => new sfWidgetFormInputText(),
       'montant'       => new sfWidgetFormInputText(),
@@ -25,21 +26,41 @@ abstract class BaseVenteForm extends BaseFormDoctrine
       'prenom'        => new sfWidgetFormInputText(),
       'id_question'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Question'), 'add_empty' => false)),
       'id_agent'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => false)),
+=======
+      'id_vente'          => new sfWidgetFormInputHidden(),
+      'montant'           => new sfWidgetFormInputText(),
+      'numero_cc'         => new sfWidgetFormInputText(),
+      'cvv2'              => new sfWidgetFormInputText(),
+      'date_validite'     => new sfWidgetFormInputText(),
+      'nom'               => new sfWidgetFormInputText(),
+      'prenom'            => new sfWidgetFormInputText(),
+      'id_question'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Question'), 'add_empty' => false)),
+      'id_agent'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => false)),
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
       'date_creation'     => new sfWidgetFormDateTime(),
       'date_modification' => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
+<<<<<<< HEAD
       'id_vente'      => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_vente')), 'empty_value' => $this->getObject()->get('id_vente'), 'required' => false)),
       'code_client'       => new sfValidatorString(array('max_length' => 45)),
+=======
+      'id_vente'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id_vente')), 'empty_value' => $this->getObject()->get('id_vente'), 'required' => false)),
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
       'montant'           => new sfValidatorPass(),
       'numero_cc'         => new sfValidatorString(array('max_length' => 16)),
       'cvv2'              => new sfValidatorString(array('max_length' => 3)),
       'date_validite'     => new sfValidatorPass(array('required' => false)),
       'nom'               => new sfValidatorString(array('max_length' => 45)),
       'prenom'            => new sfValidatorString(array('max_length' => 45)),
+<<<<<<< HEAD
       'id_question'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Question'))),
       'id_agent'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'))),
+=======
+      'id_question'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Question'))),
+      'id_agent'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'))),
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
       'date_creation'     => new sfValidatorDateTime(),
       'date_modification' => new sfValidatorDateTime(),
     ));

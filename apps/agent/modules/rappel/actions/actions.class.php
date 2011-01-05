@@ -14,9 +14,14 @@ class rappelActions extends sfActions
   {
     $rappel = new Rappel();
     $rappel->setIdQuestion($request->getParameter('id_question'));
+<<<<<<< HEAD
     $rappel->setDateRappel(time());
     $rappelForm = new RappelForm($rappel);
 //    unset($rappelForm['cloture']);
+=======
+    $rappelForm = new RappelForm($rappel);
+    
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
     return $this->renderText($rappelForm);
   }
   

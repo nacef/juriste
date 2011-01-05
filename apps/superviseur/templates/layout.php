@@ -57,5 +57,9 @@
     </div-->
     
 
+<<<<<<< HEAD
     <?php echo $sf_content ?>
+=======
+        <?php echo $sf_content ?>
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
   </body></html>

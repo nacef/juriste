@@ -85,10 +85,15 @@ class questionActions extends sfActions
         } else {
           Doctrine_Manager::connection()->rollback();
         }
+<<<<<<< HEAD
       } else {
         Doctrine_Manager::connection()->commit();
       }
       $this->redirect('question/next');      
+=======
+      }
+      $this->redirect('question/next');
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
     }
   }
   

@@ -19,6 +19,8 @@ class TraitementAgentForm extends BaseTraitementAgentForm
       'value' => sfContext::getInstance()->getUser()->getLoggedUserId()
     ));
     $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden();
+    
+    $this->widgetSchema->setLabel('id_qualif_agent', 'Qualif Agent');
 
     $this->widgetSchema->setLabel('id_qualif_agent', 'Qualif Agent');
 

@@ -29,8 +29,13 @@
         <div id="navigation" class="grid_12">
           <ul>
             <li><a id="menu-main_dashboard" href="<?php echo url_for('main/dashboard') ?>" class="active">Tableau de bord</a></li>
+<<<<<<< HEAD
             <li><a id="menu-rdv_index" href="<?php echo url_for('rdv/index') ?>">Agenda</a></li>
             <li><a id="menu-vente_index" href="<?php echo url_for('vente/index') ?>">Ventes</a></li>
+=======
+            <li><a id="menu-vente_index" href="<?php echo url_for('vente/index') ?>">Ventes</a></li>
+            <li><a href="<?php echo url_for('rdv/index') ?>">Rdvs</a></li>
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
             <!--li><a href="<?php echo url_for('vente/index') ?>">Ventes</a></li>
             <li><a href="#">Stats</a></li-->
           </ul>
@@ -57,5 +62,9 @@
     </div-->
     
 
+<<<<<<< HEAD
     <?php echo $sf_content ?>
+=======
+        <?php echo $sf_content ?>
+>>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
   </body></html>
