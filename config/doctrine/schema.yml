@@ -287,18 +287,12 @@ Vente:
       unsigned: false
       primary: true
       autoincrement: true
-<<<<<<< HEAD
     code_client:
       type: string(45)
-=======
-    montant:
-      type: double
->>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
       fixed: false
       unsigned: false
       primary: false
       notnull: true
-<<<<<<< HEAD
       autoincrement: false
     montant:
       type: double
@@ -306,8 +300,6 @@ Vente:
       unsigned: false
       primary: false
       notnull: true
-=======
->>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
       autoincrement: false
     numero_cc:
       type: string(16)

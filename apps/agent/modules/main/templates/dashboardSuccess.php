@@ -3,12 +3,6 @@
   <div id="icondock" class="grid_12">
     <ul>
       <li><a href="<?php echo url_for('question/index') ?>" rel="facebox" title="Consultez vos questions"><img src="/images/icondock/email.png" alt="Questions" /><br />Questions
-<<<<<<< HEAD
-=======
-      <?php if ($questionsCount > 0): ?>
-      <span><?php echo $questionsCount ?></span>
-      <?php endif; ?>
->>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
       </a></li>
       <li><a href="<?php echo url_for('rappel/index') ?>" rel="tipsy" title="Rappels clients"><img SRC="/images/icondock/bell.png" alt="Rappels" /><br />Rappels
       <?php if ($rappelsCount > 0): ?>

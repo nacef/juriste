@@ -20,30 +20,6 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @property Doctrine_Collection $Rappel
  * @property Doctrine_Collection $TraitementAvocat
  * 
-<<<<<<< HEAD
- * @method integer             getIdQuestion()      Returns the current record's "id_question" value
- * @method string              getNom()             Returns the current record's "nom" value
- * @method string              getPrenom()          Returns the current record's "prenom" value
- * @method string              getCodePostal()      Returns the current record's "code_postal" value
- * @method string              getPays()            Returns the current record's "pays" value
- * @method string              getTelephone()       Returns the current record's "telephone" value
- * @method string              getEmail()           Returns the current record's "email" value
- * @method string              getTexteQuestion()   Returns the current record's "texte_question" value
- * @method Doctrine_Collection getTraitementAgent() Returns the current record's "TraitementAgent" collection
- * @method Doctrine_Collection getVente()           Returns the current record's "Vente" collection
- * @method Doctrine_Collection getRappel()           Returns the current record's "Rappel" collection
- * @method Doctrine_Collection getTraitementAvocat() Returns the current record's "TraitementAvocat" collection
- * @method Question            setIdQuestion()      Sets the current record's "id_question" value
- * @method Question            setNom()             Sets the current record's "nom" value
- * @method Question            setPrenom()          Sets the current record's "prenom" value
- * @method Question            setCodePostal()      Sets the current record's "code_postal" value
- * @method Question            setPays()            Sets the current record's "pays" value
- * @method Question            setTelephone()       Sets the current record's "telephone" value
- * @method Question            setEmail()           Sets the current record's "email" value
- * @method Question            setTexteQuestion()   Sets the current record's "texte_question" value
- * @method Question            setTraitementAgent() Sets the current record's "TraitementAgent" collection
- * @method Question            setVente()           Sets the current record's "Vente" collection
-=======
  * @method integer             getIdQuestion()       Returns the current record's "id_question" value
  * @method string              getNom()              Returns the current record's "nom" value
  * @method string              getPrenom()           Returns the current record's "prenom" value
@@ -66,7 +42,6 @@ Doctrine_Manager::getInstance()->bindComponent('Question', 'doctrine');
  * @method Question            setTexteQuestion()    Sets the current record's "texte_question" value
  * @method Question            setTraitementAgent()  Sets the current record's "TraitementAgent" collection
  * @method Question            setVente()            Sets the current record's "Vente" collection
->>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
  * @method Question            setRappel()           Sets the current record's "Rappel" collection
  * @method Question            setTraitementAvocat() Sets the current record's "TraitementAvocat" collection
  * 

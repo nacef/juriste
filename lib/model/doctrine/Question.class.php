@@ -36,8 +36,4 @@ class Question extends BaseQuestion
     return $this->getIdQuestion();
   }
 
-  public function __toString() {
-    return $this->getIdQuestion();
-  }
-
 }

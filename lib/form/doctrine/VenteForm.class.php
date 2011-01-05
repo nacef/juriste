@@ -17,26 +17,16 @@ class VenteForm extends BaseVenteForm
     unset($this['date_creation'], $this['date_modification']);
     
     if ($this->question_id) {
-<<<<<<< HEAD
-	  $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden(array(), array(
-	    'value' => $this->question_id
-	  ));
-=======
   	  $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden(array(), array(
 	      'value' => $this->question_id
   	  ));    
->>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
     } else {
   	  $this->widgetSchema['id_question'] = new sfWidgetFormInputHidden();        
     }
 	  
 	  $this->widgetSchema['id_agent'] = new sfWidgetFormInputHidden(array(), array(
       'value' => sfContext::getInstance()->getUser()->getLoggedUserId()
-<<<<<<< HEAD
-	  ));
-=======
     ));
->>>>>>> afea04357b2ddd3c83a3631dbe6e07986d2cd7e0
     
     $this->widgetSchema['date_validite'] = new sfWidgetFormCCExpirationDate();
     

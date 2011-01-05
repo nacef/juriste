@@ -22,8 +22,6 @@ class TraitementAgentForm extends BaseTraitementAgentForm
     
     $this->widgetSchema->setLabel('id_qualif_agent', 'Qualif Agent');
 
-    $this->widgetSchema->setLabel('id_qualif_agent', 'Qualif Agent');
-
     $this->widgetSchema->addFormFormatter('reality', new RealitySchemaFormatter($this->widgetSchema));
     $this->widgetSchema->setFormFormatterName('reality');    
   }
