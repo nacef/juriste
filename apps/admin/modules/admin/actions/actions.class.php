@@ -28,7 +28,7 @@ class adminActions extends sfActions
 		  
 			if (($handle = fopen(sfConfig::get('sf_upload_dir').'/injection.csv', "r")) !== FALSE) {
 				while (($data = fgetcsv($handle, 0, ";")) !== FALSE) {
-					if ($data[9] != '' || $data[8] != '') {
+					if ($data[9] != '') {
 						$question = new Question();
 						$question->setNom($data[4]);
 						$question->setPrenom($data[5]);
