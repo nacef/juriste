@@ -16,4 +16,9 @@ class UtilisateurTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Utilisateur');
     }
+	
+	public function getAvocats() {
+		return $this->createQuery('a')
+			->where('a.type = 2');
+	}
 }

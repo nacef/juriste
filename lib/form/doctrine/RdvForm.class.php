@@ -12,5 +12,29 @@ class RdvForm extends BaseRdvForm
 {
   public function configure()
   {
+	$this->widgetSchema['id_vente'] = new sfWidgetFormInputHidden();
+	
+	$this->widgetSchema['id_avocat'] = new sfWidgetFormDoctrineChoice(array(
+		'model' => 'Utilisateur',
+		'add_empty' => true,
+		'table_method' => 'getAvocats'
+	));
+	
+    $this->widgetSchema['date_debut_rdv'] = new sfWidgetFormDateTime(array(
+      'date' => array(
+        'format' => '%day%/%month%/%year%'
+      ),
+      'time' => array(
+        'format' => '%hour%:%minute%'
+      )
+    ));
+	
+	$this->widgetSchema->setLabels(array(
+		'date_debut_rdv' => 'Date RDV',
+		'id_avocat' => 'Avocat'
+	));
+	
+    $this->widgetSchema->addFormFormatter('reality', new RealitySchemaFormatter($this->widgetSchema));
+    $this->widgetSchema->setFormFormatterName('reality');    
   }
 }

@@ -25,9 +25,17 @@ Utilisateur:
     type: '1'
 <?php for ($i = 1; $i <= 10; $i++): ?>
   Avocat_<?php echo $i ?>:
-    nom: avocat_<?php echo $i . "\n" ?>
+    nom: avocat<?php echo $i . "\n" ?>
     prenom: juriste
-    login: avocat_<?php echo $i . "\n" ?>
-    password: whassup
+    login: avocat<?php echo $i . "\n" ?>
+    password: avocat<?php echo $i . "\n" ?>
     type : '2'
+<?php endfor ?>
+<?php for ($i = 1; $i <= 10; $i++): ?>
+  Superviseur_<?php echo $i ?>:
+    nom: sup<?php echo $i . "\n" ?>
+    prenom: superviseur
+    login: sup<?php echo $i . "\n" ?>
+    password: sup<?php echo $i . "\n" ?>
+    type : '3'
 <?php endfor ?>

@@ -10,13 +10,16 @@ Doctrine_Manager::getInstance()->bindComponent('QualificationAgent', 'doctrine')
  * @property integer $id_qualif_agent
  * @property string $texte_qualification
  * @property Doctrine_Collection $TraitementAgent
+ * @property Doctrine_Collection $TraitementAvocat
  * 
  * @method integer             getIdQualifAgent()       Returns the current record's "id_qualif_agent" value
  * @method string              getTexteQualification()  Returns the current record's "texte_qualification" value
  * @method Doctrine_Collection getTraitementAgent()     Returns the current record's "TraitementAgent" collection
+ * @method Doctrine_Collection getTraitementAvocat()    Returns the current record's "TraitementAvocat" collection
  * @method QualificationAgent  setIdQualifAgent()       Sets the current record's "id_qualif_agent" value
  * @method QualificationAgent  setTexteQualification()  Sets the current record's "texte_qualification" value
  * @method QualificationAgent  setTraitementAgent()     Sets the current record's "TraitementAgent" collection
+ * @method QualificationAgent  setTraitementAvocat()    Sets the current record's "TraitementAvocat" collection
  * 
  * @package    juriste
  * @subpackage model
@@ -51,6 +54,10 @@ abstract class BaseQualificationAgent extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasMany('TraitementAgent', array(
+             'local' => 'id_qualif_agent',
+             'foreign' => 'id_qualif_agent'));
+
+        $this->hasMany('TraitementAvocat', array(
              'local' => 'id_qualif_agent',
              'foreign' => 'id_qualif_agent'));
     }

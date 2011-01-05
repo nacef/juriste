@@ -196,21 +196,6 @@ TraitementAgent:
       primary: false
       notnull: true
       autoincrement: false
-    rappel:
-      type: boolean
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-      default: false
-    date_rappel:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
   relations:
     QualificationAgent:
       local: id_qualif_agent
@@ -285,6 +270,16 @@ Utilisateur:
 Vente:
   connection: doctrine
   tableName: vente
+  actAs:
+    Timestampable:
+      created:
+        name: date_creation
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: date_modification
+        type: timestamp
+        format: Y-m-d H:i:s
   columns:
     id_vente:
       type: integer(4)
@@ -292,29 +287,36 @@ Vente:
       unsigned: false
       primary: true
       autoincrement: true
-    montant:
+    code_client:
       type: string(45)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
+      autoincrement: false
+    montant:
+      type: double
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
       autoincrement: false
     numero_cc:
-      type: string(45)
+      type: string(16)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
     cvv2:
-      type: string(45)
+      type: string(3)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
     date_validite:
-      type: timestamp(25)
+      type: varchar(25)
       fixed: false
       unsigned: false
       primary: false
@@ -325,14 +327,14 @@ Vente:
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
     prenom:
       type: string(45)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
     id_question:
       type: integer(4)
@@ -390,3 +392,118 @@ Dispatch:
       local: id_agent
       foreign: id_utilisateur
       type: one
+Rappel:
+  connection: doctrine
+  tableName: rappel
+  actAs:
+    Timestampable:
+      created:
+        name: date_creation
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: date_modification
+        type: timestamp
+        format: Y-m-d H:i:s
+  columns:
+    id_rappel:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    id_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    date_rappel:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    cloture:
+      type: boolean
+      notnull: true
+    id_question:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Question:
+      local: id_question
+      foreign: id_question
+      type: one
+    Utilisateur:
+      local: id_agent
+      foreign: id_utilisateur
+      type: one
+TraitementAvocat:
+  connection: doctrine
+  tableName: traitement_avocat
+  actAs:
+    Timestampable:
+      created:
+        name: date_creation
+        type: timestamp
+        format: Y-m-d H:i:s
+      updated:
+        name: date_modification
+        type: timestamp
+        format: Y-m-d H:i:s
+  columns:
+    id_traitement_avocat:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    commentaire_avocat:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_qualif_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    id_question:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    id_agent:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    QualificationAgent:
+      local: id_qualif_agent
+      foreign: id_qualif_agent
+      type: one
+    Question:
+      local: id_question
+      foreign: id_question
+      type: one
+    Agent:
+      local: id_agent
+      foreign: id_utilisateur
+      type: one
+

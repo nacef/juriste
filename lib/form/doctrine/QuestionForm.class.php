@@ -14,6 +14,8 @@ class QuestionForm extends BaseQuestionForm
   {
     unset($this['date_question'], $this['updated_at']);
     
+    $this->widgetSchema->moveField('texte_question', sfWidgetFormSchema::BEFORE, 'nom');
+    
     $this->widgetSchema->addFormFormatter('reality', new RealitySchemaFormatter($this->widgetSchema));
     $this->widgetSchema->setFormFormatterName('reality');
   }

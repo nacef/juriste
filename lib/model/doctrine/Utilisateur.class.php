@@ -27,4 +27,8 @@ class Utilisateur extends BaseUtilisateur
     
     return $utilisateur;
   }
+  
+  public function __toString() {
+    return $this->getLogin();
+  }
 }

@@ -1,0 +1,7 @@
+QualificationAgent:
+  QualificationAgent_1:
+    texte_qualification: 'A rappeler'
+  QualificationAgent_2:
+    texte_qualification: 'Pas de reponse'
+  QualificationAgent_3:
+    texte_qualification: 'Vente'
