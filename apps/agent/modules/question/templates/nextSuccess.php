@@ -4,11 +4,11 @@
       $('#sub_form').empty();
       var id_question = $('#question_id_question').val();
       if ($(this).val() == 1) {
-        $.get('/agent_dev.php/rappel/form?id_question=' + id_question, function(data) {
+        $.get('/agent.php/rappel/form?id_question=' + id_question, function(data) {
           $('#sub_form').append(data);
         });          
       } else if ($(this).val() == 3) {
-        $.get('/agent_dev.php/vente/form?id_question=' + id_question, function(data) {
+        $.get('/agent.php/vente/form?id_question=' + id_question, function(data) {
           $('#sub_form').append(data);
         });                
       }
