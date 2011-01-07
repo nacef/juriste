@@ -28,4 +28,19 @@ class rappelActions extends sfActions
       ->execute();
   }
   
+  public function executeRappeler(sfWebRequest $request) {
+    $this->forward404Unless($rappel = Doctrine_Core::getTable('Rappel')->find(array($request->getParameter('id_rappel'))), sprintf('Ce rappel n\'existe pas (%s).', $request->getParameter('id_rappel')));
+    
+    $traitement = new TraitementAgent();
+    $traitement->setIdQuestion($rappel->getIdQuestion());
+    $traitement->setIdAgent($rappel->getIdAgent());
+    $traitement->setPriorite(1);
+    $traitement->save();
+    
+    $rappel->setCloture(true);
+    $rappel->save();
+    
+    $this->redirect('question/next');
+  }
+  
 }

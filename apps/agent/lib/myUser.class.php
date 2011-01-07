@@ -30,6 +30,7 @@ class myUser extends sfBasicSecurityUser
     return RappelTable::getInstance()->createQuery('r')
       ->select('COUNT(r.id_rappel)')
       ->where('r.id_agent = ?', $this->getLoggedUserId())
+      ->andWhere('r.cloture = ?', false)
       ->fetchOne(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
   }
 }

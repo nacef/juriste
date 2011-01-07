@@ -96,7 +96,7 @@ class questionActions extends sfActions
 	  $nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
 		  ->where('t.id_qualif_agent is NULL')
 		  ->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUserId())
-		  ->orderBy('t.date_creation ASC')
+		  ->orderBy('t.priorite DESC, t.date_creation ASC')
 		  ->fetchOne();
 		
 		if ($nextQuestion) {

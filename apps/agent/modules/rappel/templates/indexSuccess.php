@@ -9,6 +9,7 @@
         <th width="20%" scope="col">E-Mail</th>
         <th width="20%" scope="col">T&eacute;l&eacute;phone</th>
         <th width="20%" scope="col">Date rappel</th>
+        <th></th>
     </tr>
     <?php foreach($rappels as $rappel): ?>
     <tr>
@@ -18,6 +19,7 @@
         <td scope="col"><?php echo $rappel->getQuestion()->getEmail() ?></td>
         <td scope="col"><?php echo $rappel->getQuestion()->getTelephone() ?></td>
         <td scope="col"><?php echo $rappel->getDateRappel() ?></td>
+        <td scope="col"><a href="<?php echo url_for('rappel/rappeler?id_rappel='.$rappel->getIdRappel()) ?>">Rappeler</a></td>
     </tr>
     <?php endforeach; ?>
 </table>

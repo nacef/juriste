@@ -12,6 +12,7 @@ Doctrine_Manager::getInstance()->bindComponent('TraitementAgent', 'doctrine');
  * @property integer $id_qualif_agent
  * @property integer $id_question
  * @property integer $id_agent
+ * @property integer $priorite
  * @property QualificationAgent $QualificationAgent
  * @property Question $Question
  * @property Utilisateur $Utilisateur
@@ -21,6 +22,7 @@ Doctrine_Manager::getInstance()->bindComponent('TraitementAgent', 'doctrine');
  * @method integer            getIdQualifAgent()       Returns the current record's "id_qualif_agent" value
  * @method integer            getIdQuestion()          Returns the current record's "id_question" value
  * @method integer            getIdAgent()             Returns the current record's "id_agent" value
+ * @method integer            getPriorite()            Returns the current record's "priorite" value
  * @method QualificationAgent getQualificationAgent()  Returns the current record's "QualificationAgent" value
  * @method Question           getQuestion()            Returns the current record's "Question" value
  * @method Utilisateur        getUtilisateur()         Returns the current record's "Utilisateur" value
@@ -29,6 +31,7 @@ Doctrine_Manager::getInstance()->bindComponent('TraitementAgent', 'doctrine');
  * @method TraitementAgent    setIdQualifAgent()       Sets the current record's "id_qualif_agent" value
  * @method TraitementAgent    setIdQuestion()          Sets the current record's "id_question" value
  * @method TraitementAgent    setIdAgent()             Sets the current record's "id_agent" value
+ * @method TraitementAgent    setPriorite()            Sets the current record's "priorite" value
  * @method TraitementAgent    setQualificationAgent()  Sets the current record's "QualificationAgent" value
  * @method TraitementAgent    setQuestion()            Sets the current record's "Question" value
  * @method TraitementAgent    setUtilisateur()         Sets the current record's "Utilisateur" value
@@ -85,6 +88,16 @@ abstract class BaseTraitementAgent extends sfDoctrineRecord
              'primary' => false,
              'notnull' => true,
              'autoincrement' => false,
+             'length' => 4,
+             ));
+        $this->hasColumn('priorite', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => true,
+             'autoincrement' => false,
+             'default' => 0,
              'length' => 4,
              ));
     }

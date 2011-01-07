@@ -17,6 +17,7 @@ abstract class BaseTraitementAgentFormFilter extends BaseFormFilterDoctrine
       'id_qualif_agent'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('QualificationAgent'), 'add_empty' => true)),
       'id_question'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Question'), 'add_empty' => true)),
       'id_agent'            => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => true)),
+      'priorite'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'date_creation'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'date_modification'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
@@ -26,6 +27,7 @@ abstract class BaseTraitementAgentFormFilter extends BaseFormFilterDoctrine
       'id_qualif_agent'     => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('QualificationAgent'), 'column' => 'id_qualif_agent')),
       'id_question'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Question'), 'column' => 'id_question')),
       'id_agent'            => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Utilisateur'), 'column' => 'id_utilisateur')),
+      'priorite'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'date_creation'       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'date_modification'   => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
@@ -52,6 +54,7 @@ abstract class BaseTraitementAgentFormFilter extends BaseFormFilterDoctrine
       'id_qualif_agent'     => 'ForeignKey',
       'id_question'         => 'ForeignKey',
       'id_agent'            => 'ForeignKey',
+      'priorite'            => 'Number',
       'date_creation'       => 'Date',
       'date_modification'   => 'Date',
     );

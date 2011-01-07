@@ -196,6 +196,14 @@ TraitementAgent:
       primary: false
       notnull: true
       autoincrement: false
+    priorite:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+      default: 0
   relations:
     QualificationAgent:
       local: id_qualif_agent

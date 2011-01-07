@@ -20,6 +20,7 @@ abstract class BaseTraitementAgentForm extends BaseFormDoctrine
       'id_qualif_agent'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('QualificationAgent'), 'add_empty' => true)),
       'id_question'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Question'), 'add_empty' => false)),
       'id_agent'            => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'), 'add_empty' => false)),
+      'priorite'            => new sfWidgetFormInputText(),
       'date_creation'       => new sfWidgetFormDateTime(),
       'date_modification'   => new sfWidgetFormDateTime(),
     ));
@@ -30,6 +31,7 @@ abstract class BaseTraitementAgentForm extends BaseFormDoctrine
       'id_qualif_agent'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('QualificationAgent'), 'required' => false)),
       'id_question'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Question'))),
       'id_agent'            => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Utilisateur'))),
+      'priorite'            => new sfValidatorInteger(array('required' => false)),
       'date_creation'       => new sfValidatorDateTime(),
       'date_modification'   => new sfValidatorDateTime(),
     ));
