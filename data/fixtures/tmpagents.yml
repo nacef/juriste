@@ -1,0 +1,24 @@
+<?php
+function createRandomPassword() {
+    $chars = "abcdefghijkmnopqrstuvwxyz023456789";
+    srand((double)microtime()*1000000);
+    $i = 0;
+    $pass = '' ;
+    while ($i <= 7) {
+        $num = rand() % 33;
+        $tmp = substr($chars, $num, 1);
+        $pass = $pass . $tmp;
+        $i++;
+    }
+    return $pass;
+}
+?>
+Utilisateur:
+<?php for ($i = 1; $i <= 30; $i++): ?>
+  Agent_<?php echo $i ?>:
+    nom: 'Agent '
+    prenom: <?php echo $i . "\n" ?>
+    login: agent<?php echo $i . "\n" ?>
+    password: <?php echo createRandomPassword() . "\n" ?>
+    type : '1'
+<?php endfor ?>

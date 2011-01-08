@@ -197,6 +197,7 @@ if ($drupalSession->session_id) {
       $question->save();
 
       delete_node($drupalSession, $viewNode['nid']);      
+
     }
 
     $drupalSession->userLogout();
