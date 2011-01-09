@@ -194,7 +194,7 @@ TraitementAgent:
       fixed: false
       unsigned: false
       primary: false
-      notnull: true
+      notnull: false
       autoincrement: false
     priorite:
       type: integer(4)

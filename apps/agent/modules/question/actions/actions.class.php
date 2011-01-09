@@ -93,22 +93,39 @@ class questionActions extends sfActions
   }
   
   public function executeNext(sfWebRequest $request) {
-	  $nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
+	  $unqualifiedQuestion = TraitementAgentTable::getInstance()->createQuery('t')
 		  ->where('t.id_qualif_agent is NULL')
+//		  ->andWhere('t.id_agent is NULL')
 		  ->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUserId())
-		  ->orderBy('t.priorite DESC, t.date_creation ASC')
+		  ->orderBy('t.date_creation DESC')
 		  ->fetchOne();
 		
-		if ($nextQuestion) {
-		  $this->questionForm = new QuestionForm($nextQuestion->getQuestion());
-		  $this->traitementAgentForm = new TraitementAgentForm($nextQuestion);
+		if ($unqualifiedQuestion) {
+		  
+		  $this->questionForm = new QuestionForm($unqualifiedQuestion->getQuestion());
+		  $this->traitementAgentForm = new TraitementAgentForm($unqualifiedQuestion);
 /*		  return $this->renderPartial('agentQuestion', array(
 		    'questionForm' => $this->questionForm,
 		    'traitementAgentForm' => $this->traitementAgentForm
 		  ));*/
 		}
-  	else
-  	  $this->redirect('main/index');
+  	else {
+  	  $nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
+  	    ->where('t.id_qualif_agent is NULL')
+  	    ->andWhere('t.id_agent is NULL')
+  	    ->orderBy('t.date_creation DESC')
+  	    ->fetchOne();
+  	    
+  	    if ($nextQuestion) {
+		      $nextQuestion->setIdAgent($this->getUser()->getLoggedUserId());
+		      $nextQuestion->save();
+		      
+	        $this->questionForm = new QuestionForm($nextQuestion->getQuestion());
+	        $this->traitementAgentForm = new TraitementAgentForm($nextQuestion);
+  	    } else {
+      	  $this->redirect('main/index');
+  	    }
+  	}
   }
   
   public function executeNextQuestionPartial(sfWebRequest $request) {
