@@ -13,6 +13,7 @@
 class Utilisateur extends BaseUtilisateur
 {
 
+/*
   public function save(Doctrine_Connection $conn = null) {
     $new = $this->isNew() ? true : false;
     
@@ -27,7 +28,7 @@ class Utilisateur extends BaseUtilisateur
     
     return $utilisateur;
   }
-  
+*/  
   public function __toString() {
     return $this->getLogin();
   }
