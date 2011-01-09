@@ -95,7 +95,6 @@ class questionActions extends sfActions
   public function executeNext(sfWebRequest $request) {
 	  $unqualifiedQuestion = TraitementAgentTable::getInstance()->createQuery('t')
 		  ->where('t.id_qualif_agent is NULL')
-//		  ->andWhere('t.id_agent is NULL')
 		  ->andWhere('t.id_agent = ?', $this->getUser()->getLoggedUserId())
 		  ->orderBy('t.date_creation DESC')
 		  ->fetchOne();
@@ -104,10 +103,6 @@ class questionActions extends sfActions
 		  
 		  $this->questionForm = new QuestionForm($unqualifiedQuestion->getQuestion());
 		  $this->traitementAgentForm = new TraitementAgentForm($unqualifiedQuestion);
-/*		  return $this->renderPartial('agentQuestion', array(
-		    'questionForm' => $this->questionForm,
-		    'traitementAgentForm' => $this->traitementAgentForm
-		  ));*/
 		}
   	else {
   	  $nextQuestion = TraitementAgentTable::getInstance()->createQuery('t')
