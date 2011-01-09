@@ -21,12 +21,7 @@ class Question extends BaseQuestion
     if ($new) {
       $traitement = new TraitementAgent();
       $traitement->setQuestion($this);
-      $traitement->setIdAgent(QuestionDispatcher::getNextAgent()->getIdAgent());
       $traitement->save();
-
-      $dispatch = DispatchTable::getInstance()->findOneByIdAgent($traitement->getIdAgent());
-      $dispatch->setQuestions($dispatch->getQuestions() + 1);
-      $dispatch->save();
     }    
     
     return $question;
