@@ -61,8 +61,16 @@
         </div>
       </div>
     </div-->
-    
-
-        <?php echo $sf_content ?>
+    <div id="main_content_wrap" class="container_12">
+    <?php if ($sf_user->hasFlash('message')): ?>
+    <?php $flash = $sf_user->getFlash('message') ?>
+        <div class="notification <?php echo $flash['icon'] ?> canhide">
+          <p><strong><?php echo $flash['type'] ?>: </strong>
+          <?php echo $flash['text'] ?>
+          </p>
+        </div>      
+      <?php endif; ?>
+      <?php echo $sf_content ?>
+    </div>
   </body>
 </html>
